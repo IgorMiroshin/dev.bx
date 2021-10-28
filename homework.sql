@@ -126,8 +126,8 @@ INSERT INTO movie_title (NAME)
 SELECT TITLE
 FROM movie;
 
-SELECT *
-FROM movie_title;
+UPDATE movie_title
+SET LANG_ID = 1 WHERE LANG_ID IS NULL;
 
 ALTER TABLE movie
     ADD movie_title_id int;
