@@ -166,7 +166,7 @@ function get_numeric($value)
 function checkInt($value): bool
 {
     $value = get_numeric($value);
-    return $value >= 0 && is_numeric($value) && !is_float($value);
+    return $value >= 0 && is_int($value) && !is_float($value);
 }
 
 function filterArray(array $arr, $filterValue, $filterKey): bool
