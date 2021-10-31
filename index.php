@@ -4,6 +4,14 @@ $inputValue = readline("How old are you: ");
 
 $filterKey = 'age_restriction';
 
+$useFormattedOutput = [
+    "title" => ["key" => false, "format" => false, "delimiter" => ' ', "output" => true],
+    'release_year' => ["key" => false, "format" => "(,)", "delimiter" => ", ", "output" => true],
+    'duration' => ["key" => false, "format" => false, "delimiter" => false, "output" => false],
+    'age_restriction' => ["key" => false, "format" => ',+', "delimiter" => '. ', "output" => true],
+    'rating' => ["key" => "Rating - ", "format" => false, "delimiter" => false, "output" => true],
+];
+
 $movies = [
     [
         "title" => "The Shawshank Redemption",
@@ -147,9 +155,18 @@ $movies = [
     ]
 ];
 
+function get_numeric($value)
+{
+    if (is_numeric($value)) {
+        return $value + 0;
+    }
+    return false;
+}
+
 function checkInt($value): bool
 {
-    return intval($value) && $value > 0;
+    $value = get_numeric($value);
+    return $value >= 0 && is_numeric($value) && !is_float($value);
 }
 
 function filterArray(array $arr, $filterValue, $filterKey): bool
@@ -167,17 +184,55 @@ function filterArray(array $arr, $filterValue, $filterKey): bool
     return $flag;
 }
 
-function showArray(array $arr, $filterValue, $filterKey)
+function formattedOutput($value, $useFormattedOutput): string
 {
+    $output = '';
+    if (is_array($value)) {
+        foreach ($value as $key => $item) {
+            $useFormattedOutputItem = $useFormattedOutput[$key];
+            if (is_array($item)) {
+                $output = formattedOutput($item, $useFormattedOutput);
+            } else {
+                foreach ($useFormattedOutputItem as $keyFOI => $itemFOI) {
+                    if ($itemFOI) {
+                        switch ($keyFOI) {
+                            case 'key':
+                                $item = $itemFOI . $item;
+                                break;
+                            case 'format':
+                                $arrItemFOI = explode(',', $itemFOI);
+                                $item = $arrItemFOI[0] . $item . $arrItemFOI[1];
+                                break;
+                            case 'delimiter':
+                                $item = $item . $itemFOI;
+                                break;
+                            case 'output':
+                                $output .= $item;
+                                break;
+                        }
+                    }
+                }
+            }
+        }
+    } else {
+        $output = $value . PHP_EOL;
+    }
+    return $output;
+}
+
+function showArray(array $arr, $filterValue, $filterKey, $useFormattedOutput)
+{
+    $key = 0;
     foreach ($arr as $arrItem) {
         if (filterArray($arrItem, $filterValue, $filterKey)) {
-            echo implode(', ', $arrItem) . PHP_EOL;
+            $key++;
+            echo $key . '. ' . formattedOutput($arrItem, $useFormattedOutput) . PHP_EOL;
         }
     }
 }
 
 if (checkInt($inputValue)) {
-    showArray($movies, $inputValue, $filterKey);
+    showArray($movies, $inputValue, $filterKey, $useFormattedOutput);
 } else {
     echo "Error Input Value:(((";
 }
