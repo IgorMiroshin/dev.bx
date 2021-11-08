@@ -616,8 +616,8 @@ html, body {
 }
 
 .film__page-detail_rating-line span {
-    width: 27px;
-    height: 27px;
+    width: 20px;
+    height: 20px;
     background: #F2F2F2;
     border: 5px solid #FFFFFF;
 }
