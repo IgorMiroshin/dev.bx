@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Title</title>
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/style.css">
@@ -15,7 +16,7 @@
             </div>
         </div>
         <?
-        require_once 'components/menu.list/template.php'
+        require_once 'templates/menu.list/template.php'
         ?>
     </aside>
     <div id="page_content" class="content">
@@ -27,3 +28,5 @@
                 ?>
             </div>
         </header>
+        <div class="content__container">
+

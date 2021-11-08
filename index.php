@@ -4,7 +4,7 @@ require_once 'header.php';
 
     <div class="film">
         <?
-        require_once 'components/films.list/template.php'
+        require_once 'templates/films.list/template.php'
         ?>
     </div>
 
