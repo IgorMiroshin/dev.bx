@@ -21,20 +21,9 @@
     <div id="page_content" class="content">
         <header id="page_header" class="header">
             <div class="header__container">
-                <div class="header__search">
-                    <form action="">
-                        <div class="header__search_input">
-                            <input type="text" placeholder="Поиск по каталогу...">
-                        </div>
-                        <div class="header__search_button">
-                            <button type="submit">ИСКАТЬ</button>
-                        </div>
-                    </form>
-                </div>
-                <div class="header__button">
-                    <div class="header__button_add">
-                        <a href="">Добавить фильм</a>
-                    </div>
-                </div>
+                <?
+                require_once 'includes/searchForm.php';
+                require_once 'includes/addFilm.php';
+                ?>
             </div>
         </header>
