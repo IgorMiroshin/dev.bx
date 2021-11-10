@@ -1,11 +1,15 @@
+<?php
+/** @var string $content */
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Title</title>
-    <link rel="stylesheet" href="./css/reset.css">
-    <link rel="stylesheet" href="./css/style.css">
+    <title>Bitflix</title>
+    <link rel="stylesheet" href="./resources/css/reset.css">
+    <link rel="stylesheet" href="./resources/css/style.css">
 </head>
 <body>
 <div>
@@ -23,10 +27,15 @@
         <header id="page_header" class="header">
             <div class="header__container">
                 <?
-                require_once 'includes/searchForm.php';
-                require_once 'includes/addFilm.php';
+                require_once 'resources/includes/searchForm.php';
+                require_once 'resources/includes/addFilm.php';
                 ?>
             </div>
         </header>
         <div class="content__container">
-
+            <?= $content ?>
+        </div>
+    </div>
+</div>
+</body>
+</html>

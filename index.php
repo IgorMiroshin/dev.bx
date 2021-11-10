@@ -1,13 +1,12 @@
-<?php
-require_once 'header.php';
-?>
+<?
+require_once "data/film__data.php";
+/** @var array $movies */
+require_once "lib/global-functions.php";
+require_once "lib/template-functions.php";
 
-    <div class="film">
-        <?
-        require_once 'templates/films.list/template.php'
-        ?>
-    </div>
+$filmsListPage = renderTemplate("resources/pages/films.list.php", [
+    'movies' => $movies
+]);
 
-<?php
-require_once 'footer.php';
+renderLayout($filmsListPage, []);
 ?>
