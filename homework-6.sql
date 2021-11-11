@@ -259,3 +259,9 @@ FROM movie
 WHERE d.ID = 1 AND mt.LANGUAGE_ID='ru'
 GROUP BY movie.ID, mt.TITLE, d.NAME;
 
+#Вывести список фильмов с названием, сокращённым до 10 символов. Если название короче 10 символов – оставляем как есть. Если длиннее – сокращаем до 10 символов и добавляем многоточие.
+
+SELECT m.ID,
+       IF(CHAR_LENGTH(mt.TITLE) > 10, CONCAT(left(mt.TITLE, 10), '...'), mt.TITLE) AS CROPTITLE
+FROM movie m
+         INNER JOIN movie_title mt on m.ID = mt.MOVIE_ID;
