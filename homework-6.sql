@@ -227,4 +227,9 @@ GROUP BY movie.ID, mt.TITLE, d.NAME;
 
 #Вывести список названий фильмов на англйском языке с "откатом" на русский, в случае если название на английском не задано.
 
+SELECT movie.ID, mt.TITLE FROM movie
+LEFT JOIN movie_title mt on movie.ID = mt.MOVIE_ID
+WHERE mt.LANGUAGE_ID = 'en' OR NOT EXISTS(SELECT 'x' FROM movie_title WHERE MOVIE_ID = movie.ID AND LANGUAGE_ID='en')
+GROUP BY 1,2;
+
 
