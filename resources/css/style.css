@@ -133,6 +133,18 @@ html, body {
     -webkit-flex-direction: column;
     flex-direction: column;
     width: 100%;
+    overflow-y: scroll;
+    height: 600px;
+}
+
+.menu__list-items::-webkit-scrollbar {
+    width: 6px;
+    height: 8px;
+    background-color: #ccc;
+}
+
+.menu__list-items::-webkit-scrollbar-thumb {
+    background: #00b1f0;
 }
 
 .menu__item {
@@ -724,7 +736,7 @@ html, body {
     word-break: break-word;
 }
 
-.film__page-detail_wishlist{
+.film__page-detail_wishlist {
     position: absolute;
     right: 16px;
     top: 6px;

@@ -1,9 +1,10 @@
 <?php
 /** @var array $movies */
+/** @var array $id */
 ?>
 <?php
-$id = $_GET['id'];
 $moviesItem = findElement($movies, 'id', (int)$id);
+$moviesItem = $moviesItem[0];
 ?>
 <div class="film__page-detail">
     <?= renderTemplate("resources/pages/templates/films.detail/template.php", ['moviesItem' => $moviesItem]); ?>

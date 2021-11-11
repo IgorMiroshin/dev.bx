@@ -14,18 +14,13 @@
 </div>
 <div class="film__page-detail_content">
     <div class="film__page-detail_img">
-        <img src="resources/img/content/<?= $moviesItem["id"] ?>.jpg" alt="<?= $moviesItem["title"] ?>">
+        <img src="<?= linkToImage($moviesItem["id"], 'resources/img/content/') ?>" alt="<?= $moviesItem["title"] ?>">
     </div>
     <div class="film__page-detail_body">
         <div class="film__page-detail_rating">
             <div class="film__page-detail_rating-line">
                 <?
-                for ($i = 0; $i < round($moviesItem["rating"]); $i++) {
-                    echo '<span class="active"></span>';
-                }
-                for ($i = round($moviesItem["rating"]); $i < 10; $i++) {
-                    echo '<span></span>';
-                }
+                visualRating($moviesItem["rating"], 10);
                 ?>
             </div>
             <div class="film__page-detail_rating-number"><?= $moviesItem["rating"] ?></div>
@@ -46,7 +41,7 @@
                     </tr>
                     <tr>
                         <td>В главных ролях:</td>
-                        <td><?= implode(", ", $moviesItem["cast"]) ?></td>
+                        <td><?= arrayToStr($moviesItem["cast"]) ?></td>
                     </tr>
                 </table>
             </div>
