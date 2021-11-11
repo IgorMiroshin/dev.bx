@@ -14,26 +14,46 @@ drop table lang;
 
 CREATE TABLE IF NOT EXISTS director
 (
-    ID   int          not null auto_increment,
-    NAME varchar(500) not null,
-    PRIMARY KEY (ID)
+    ID
+    int
+    not
+    null
+    auto_increment,
+    NAME
+    varchar
+(
+    500
+) not null,
+    PRIMARY KEY
+(
+    ID
+)
     );
 
 CREATE TABLE IF NOT EXISTS language
 (
-    ID   char(2)      not null,
-    NAME varchar(256) not null,
-    PRIMARY KEY (ID)
+    ID char
+(
+    2
+) not null,
+    NAME varchar
+(
+    256
+) not null,
+    PRIMARY KEY
+(
+    ID
+)
     );
 
 CREATE TABLE movie
 (
-    ID           int not null auto_increment,
+    ID          int not null auto_increment,
     RELEASE_YEAR YEAR,
-    LENGTH       int,
-    MIN_AGE      int,
-    RATING       float,
-    DIRECTOR_ID  int,
+    LENGTH      int,
+    MIN_AGE     int,
+    RATING      float,
+    DIRECTOR_ID int,
 
     PRIMARY KEY (ID),
     FOREIGN KEY FK_MOVIE_DIRECTOR (DIRECTOR_ID)
@@ -204,7 +224,8 @@ VALUES (1, 1),
        (6, 3),
        (6, 7),
        (6, 8);
-#Териминатор - фантастика, боевик, триллер
+#Териминатор
+- фантастика, боевик, триллер
 #Чужой -   ужасы, фантастика, триллер
 #Нечто - ужасы, фантастика, детектив
 #Сияние -  триллер, драма, ужасы, детектив
@@ -213,7 +234,6 @@ VALUES (1, 1),
 #HOMEWORK-6 START
 
 #Вывести список фильмов, в которых снимались одновременно Арнольд Шварценеггер* и Линда Хэмилтон*.
-
 SELECT movie.ID, mt.TITLE, d.NAME
 FROM movie
          LEFT JOIN movie_title mt on movie.ID = mt.MOVIE_ID AND mt.LANGUAGE_ID = 'ru'
@@ -226,10 +246,16 @@ WHERE ma.MOVIE_ID in (SELECT MOVIE_ID
 GROUP BY movie.ID, mt.TITLE, d.NAME;
 
 #Вывести список названий фильмов на англйском языке с "откатом" на русский, в случае если название на английском не задано.
-
 SELECT movie.ID, mt.TITLE FROM movie
 LEFT JOIN movie_title mt on movie.ID = mt.MOVIE_ID
 WHERE mt.LANGUAGE_ID = 'en' OR NOT EXISTS(SELECT 'x' FROM movie_title WHERE MOVIE_ID = movie.ID AND LANGUAGE_ID='en')
 GROUP BY 1,2;
 
+#Вывести самый длительный фильм Джеймса Кэмерона*.
+SELECT DISTINCT movie.ID, mt.TITLE, d.NAME, MAX(movie.LENGTH) as MAX_LENGTH
+FROM movie
+         INNER JOIN movie_title mt on movie.ID = mt.MOVIE_ID
+         INNER JOIN director d on movie.ID = d.ID
+WHERE d.ID = 1 AND mt.LANGUAGE_ID='ru'
+GROUP BY movie.ID, mt.TITLE, d.NAME;
 
