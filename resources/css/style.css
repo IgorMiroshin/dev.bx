@@ -148,7 +148,7 @@ html, body {
 }
 
 .menu__item {
-    padding: 26px 14px;
+
     border-bottom: 2px solid rgba(242, 242, 242, 0.1);
 }
 
@@ -157,6 +157,9 @@ html, body {
 }
 
 .menu__item a {
+    display: block;
+    padding: 26px 14px;
+    width: calc(100% - 28px);
     text-transform: uppercase;
     color: #B7B7B7;
     font-weight: 500;
@@ -328,9 +331,10 @@ html, body {
 
 .film__item {
     -webkit-box-flex: 1;
-    -ms-flex: 1 1 30%;
-    -webkit-flex: 1 1 30%;
-    flex: 1 1 30%;
+    -ms-flex: 0 1 30%;
+    -webkit-flex: 0 1 30%;
+    flex: 0 1 30%;
+    width: 30%;
     margin: 0 15px 30px;
     background: #FFFFFF;
     -webkit-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1);
@@ -416,6 +420,8 @@ html, body {
     display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
+    white-space: nowrap;
+    margin-right: 8px;
 }
 
 .film__item_time i {
@@ -429,6 +435,8 @@ html, body {
     text-align: right;
     text-transform: uppercase;
     color: #CCCCCC;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .film__item_showmore-block {
@@ -509,7 +517,7 @@ html, body {
     font-size: 48px;
     line-height: 65px;
     color: #333333;
-    word-break: break-all;
+    word-break: break-word;
 }
 
 .film__page-detail_subtitle {
@@ -526,7 +534,7 @@ html, body {
     font-size: 24px;
     line-height: 33px;
     color: #999999;
-    word-break: break-all;
+    word-break: break-word;
 }
 
 .film__page-detail_subtitle span {
@@ -559,6 +567,12 @@ html, body {
     -webkit-flex-wrap: nowrap;
     -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
+}
+
+@media all and (max-width: 1200px) {
+    .film__page-detail_content {
+        flex-direction: column;
+    }
 }
 
 .film__page-detail_img {
@@ -683,7 +697,7 @@ html, body {
     font-weight: bold;
     font-size: 24px;
     line-height: 33px;
-    word-break: break-all;
+    word-break: break-word;
     color: #333333;
     margin-bottom: 22px;
 }
@@ -723,7 +737,7 @@ html, body {
     font-weight: bold;
     font-size: 24px;
     line-height: 33px;
-    word-break: break-all;
+    word-break: break-word;
 
     color: #333333;
     margin-bottom: 16px;

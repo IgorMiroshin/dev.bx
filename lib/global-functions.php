@@ -28,22 +28,24 @@ function cropText(string $text, int $length): string
     return mb_strimwidth($text, 0, $length, "...");
 }
 
-function formattedDuration(int $time)
+function formattingDurationToTime(int $time)
 {
     return date('H:i', mktime(0, $time));
 }
 
-function linkToImage(int $id, $path)
+function formattingLinkToImage(int $id, $path): string
 {
     return $path . $id . '.jpg';
 }
 
-function linkToPage($key, $value)
+function formattingLinkToPage($key, $value, $page = ''): string
 {
-    return '/?' . $key . '=' . $value;
+    $link = !empty($page) ? $page : '/';
+
+    return $link . '?' . $key . '=' . $value;
 }
 
-function visualRating($value, int $limit)
+function formattingVisualRating($value, int $limit)
 {
     for ($i = 0; $i < round($value); $i++) {
         echo '<span class="active"></span>';

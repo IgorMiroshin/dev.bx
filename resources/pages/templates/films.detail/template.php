@@ -14,13 +14,14 @@
 </div>
 <div class="film__page-detail_content">
     <div class="film__page-detail_img">
-        <img src="<?= linkToImage($moviesItem["id"], 'resources/img/content/') ?>" alt="<?= $moviesItem["title"] ?>">
+        <img src="<?= formattingLinkToImage($moviesItem["id"], 'resources/img/content/') ?>"
+             alt="<?= $moviesItem["title"] ?>">
     </div>
     <div class="film__page-detail_body">
         <div class="film__page-detail_rating">
             <div class="film__page-detail_rating-line">
                 <?
-                visualRating($moviesItem["rating"], 10);
+                formattingVisualRating($moviesItem["rating"], 10);
                 ?>
             </div>
             <div class="film__page-detail_rating-number"><?= $moviesItem["rating"] ?></div>
