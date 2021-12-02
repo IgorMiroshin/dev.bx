@@ -3,7 +3,7 @@
 $config = [
     "title" => "Bitflix",
     "menu" => [
-        "main"=>"Главная",
+        "main" => "Главная",
         'sci-fi' => 'Фантастика',
         'drama' => 'Драма',
         'adventure' => 'Приключения',
@@ -19,9 +19,9 @@ $config = [
         'war' => 'Военный',
         'sport' => 'Спорт',
         'history' => 'История',
-        "favorite"=>"Избранное",
+        "favorite" => "Избранное",
     ],
-    "DB_NAME"=>"devhomework",
-    "DB_USER"=>"devhomeworkuser",
-    "DB_PASSWORD"=>"Za-ZVtiY1BP[]Hw/"
+    "DB_NAME" => "devhomework",
+    "DB_USER" => "devhomeworkuser",
+    "DB_PASSWORD" => "Za-ZVtiY1BP[]Hw/"
 ];
