@@ -1,7 +1,6 @@
 <?php
 /** @var array $movies */
 ?>
-
 <div class="film">
     <div class="film__list-items">
         <?

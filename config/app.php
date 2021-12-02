@@ -23,5 +23,6 @@ $config = [
     ],
     "DB_NAME" => "devhomework",
     "DB_USER" => "devhomeworkuser",
-    "DB_PASSWORD" => "Za-ZVtiY1BP[]Hw/"
+    "DB_PASSWORD" => "Za-ZVtiY1BP[]Hw/",
+    "HOST" => "localhost"
 ];

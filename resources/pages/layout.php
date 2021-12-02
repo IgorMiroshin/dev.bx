@@ -2,6 +2,7 @@
 /** @var string $content */
 /** @var array $config */
 /** @var array $currentPage */
+/** @var array $genres */
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +23,11 @@
             </div>
         </div>
         <div class="menu__list-items">
+            <pre style="display:none;">
+                <?
+                var_dump($genres);
+                ?>
+            </pre>
             <?
             $menu = $config["menu"];
             foreach ($menu as $key => $menuItem) {

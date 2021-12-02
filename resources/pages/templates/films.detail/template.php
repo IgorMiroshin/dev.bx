@@ -1,30 +1,39 @@
 <?php
 /** @var array $moviesItem */
 ?>
+<?php
+$actors = [];
+$actorsTMP = getMovieActors($moviesItem["ID"]);
+foreach ($actorsTMP as $item) {
+    $actors[] = $item["NAME"];
+}
+$director = getMovieDirector($moviesItem["ID"]);
+
+?>
 <div class="film__page-detail_head">
     <div class="film__page-detail_title">
         <h1>
-            <?= $moviesItem["title"] ?> (<?= $moviesItem["release-date"] ?>)
+            <?= $moviesItem["TITLE"] ?> (<?= $moviesItem["RELEASE_DATE"] ?>)
         </h1>
     </div>
     <div class="film__page-detail_subtitle">
-        <?= $moviesItem["original-title"] ?> <span><?= $moviesItem["age-restriction"] ?>+</span>
+        <?= $moviesItem["ORIGINAL_TITLE"] ?> <span><?= $moviesItem["AGE_RESTRICTION"] ?>+</span>
     </div>
     <div class="film__page-detail_wishlist"><i class="icon icon__wishlist_grey"></i></div>
 </div>
 <div class="film__page-detail_content">
     <div class="film__page-detail_img">
-        <img src="<?= formattingLinkToImage($moviesItem["id"], 'resources/img/content/') ?>"
-             alt="<?= $moviesItem["title"] ?>">
+        <img src="<?= formattingLinkToImage($moviesItem["ID"], 'resources/img/content/') ?>"
+             alt="<?= $moviesItem["TITLE"] ?>">
     </div>
     <div class="film__page-detail_body">
         <div class="film__page-detail_rating">
             <div class="film__page-detail_rating-line">
                 <?
-                formattingVisualRating($moviesItem["rating"], 10);
+                formattingVisualRating($moviesItem["RATING"], 10);
                 ?>
             </div>
-            <div class="film__page-detail_rating-number"><?= $moviesItem["rating"] ?></div>
+            <div class="film__page-detail_rating-number"><?= $moviesItem["RATING"] ?></div>
         </div>
         <div class="film__page-detail_about">
             <div class="film__page-detail_about-title">
@@ -34,15 +43,15 @@
                 <table>
                     <tr>
                         <td>Год производства:</td>
-                        <td><?= $moviesItem["release-date"] ?></td>
+                        <td><?= $moviesItem["RELEASE_DATE"] ?></td>
                     </tr>
                     <tr>
                         <td>Режиссер:</td>
-                        <td><?= $moviesItem["director"] ?></td>
+                        <td><?= $director["NAME"] ?></td>
                     </tr>
                     <tr>
                         <td>В главных ролях:</td>
-                        <td><?= arrayToStr($moviesItem["cast"]) ?></td>
+                        <td><?= arrayToStr($actors) ?></td>
                     </tr>
                 </table>
             </div>
@@ -50,7 +59,7 @@
         <div class="film__page-detail_description">
             <div class="film__page-detail_description-title">Описание</div>
             <div class="film__page-detail_description-text">
-                <?= $moviesItem["description"] ?>
+                <?= $moviesItem["DESCRIPTION"] ?>
             </div>
         </div>
     </div>

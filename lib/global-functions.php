@@ -20,7 +20,7 @@ function findElement(array $array, $keyFilter, $keyValue): array
 
 function arrayToStr(array $array): string
 {
-    return implode(', ', $array);
+    return !empty($array) ? implode(', ', $array) : '';
 }
 
 function cropText(string $text, int $length): string
