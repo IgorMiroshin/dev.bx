@@ -28,7 +28,7 @@ function cropText(string $text, int $length): string
     return mb_strimwidth($text, 0, $length, "...");
 }
 
-function formattingDurationToTime(int $time)
+function formattingDurationToTime(int $time): string
 {
     return date('H:i', mktime(0, $time));
 }

@@ -1,10 +1,10 @@
 <?php
 /** @var $database */
-function getMovies()
+function getMovies($genre = ''): array
 {
     global $database;
 
-    $query = "SELECT * FROM movie";
+    $query = !empty($genre) ? "SELECT * FROM movie WHERE movie.ID IN (SELECT movie_genre.MOVIE_ID FROM movie_genre INNER JOIN genre on movie_genre.GENRE_ID = genre.ID WHERE genre.CODE='{$genre}')" :"SELECT * FROM movie";
 
     $result = mysqli_query($database, $query);
 
@@ -12,10 +12,11 @@ function getMovies()
     if (!$result) {
         trigger_error($database->error, E_USER_ERROR);
     }
+
     return mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
 
-function getMovie(int $id)
+function getMovie(int $id): array
 {
     global $database;
     $query = "SELECT * FROM movie WHERE ID = {$id}";
@@ -27,7 +28,7 @@ function getMovie(int $id)
     return mysqli_fetch_assoc($result);
 }
 
-function getMovieGenre(int $id)
+function getMovieGenre(int $id): array
 {
     global $database;
 
@@ -39,7 +40,7 @@ function getMovieGenre(int $id)
     return mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
 
-function getMovieActors(int $id)
+function getMovieActors(int $id): array
 {
     global $database;
     $query = "SELECT actor.NAME FROM actor INNER JOIN movie_actor ma on actor.ID = ma.ACTOR_ID WHERE ma.MOVIE_ID={$id}";
@@ -52,7 +53,7 @@ function getMovieActors(int $id)
     return mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
 
-function getMovieDirector(int $id)
+function getMovieDirector(int $id): array
 {
     global $database;
 
@@ -64,7 +65,7 @@ function getMovieDirector(int $id)
     return mysqli_fetch_assoc($result);
 }
 
-function getGenres()
+function getGenres(): array
 {
     global $database;
 

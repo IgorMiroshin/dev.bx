@@ -4,7 +4,8 @@
 /** @var string $currentPage */
 ?>
 <?php
-if ($menuItem === 'Главная') {
+$key = $menuItem["CODE"];
+if ($menuItem["NAME"] === 'Главная') {
     $link = '/';
 } elseif ($key === 'favorite') {
     $link = '/favorite.php';
@@ -14,7 +15,7 @@ if ($menuItem === 'Главная') {
     $link = formattingLinkToPage('page', $key);
 }
 ?>
-<div class="menu__item <?= (empty($currentPage) && $menuItem === 'Главная') || $currentPage === $key ? 'active' : '' ?>">
-    <a href="<?= $link ?>"><?= $menuItem ?></a>
+<div class="menu__item <?= (empty($currentPage) && $menuItem["NAME"] === 'Главная') || $currentPage === $key ? 'active' : '' ?>">
+    <a href="<?= $link ?>"><?= $menuItem["NAME"] ?></a>
 </div>
 

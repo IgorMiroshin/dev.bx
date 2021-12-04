@@ -12,21 +12,13 @@ $connect = connectSQL($config["HOST"], $config["DB_NAME"], $config["DB_USER"], $
 $setEnconding = setEncondingConnectDB();
 
 if ($connect && $setEnconding) {
-    $currentPage = $_GET["page"];
-    $movies = getMovies();
     $genres = getGenres();
-
-    if (!empty($currentPage) && isset($_GET)) {
-        $findElement = $config["menu"][$currentPage];
-        $page = renderTemplate("resources/pages/films.list.php", [
-            "movies" => findElement($movies, "genres", $findElement)
-        ]);
-    } else {
-        $page = renderTemplate("resources/pages/films.list.php", [
-            "movies" => $movies
-        ]);
-    }
-    renderLayout($page, ["config" => $config, "currentPage" => $currentPage,"genres"=>$genres]);
+    $currentPage = $_GET["page"];
+    $movies = !empty($currentPage) ? getMovies($currentPage) : getMovies();
+    $page = renderTemplate("resources/pages/films.list.php", [
+        "movies" => $movies
+    ]);
+    renderLayout($page, ["config" => $config, "currentPage" => $currentPage, "genres" => $genres]);
 } else {
     var_dump($connect);
     var_dump($setEnconding);

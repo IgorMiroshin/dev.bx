@@ -12,15 +12,13 @@ $connect = connectSQL($config["HOST"], $config["DB_NAME"], $config["DB_USER"], $
 $setEnconding = setEncondingConnectDB();
 
 if ($connect && $setEnconding) {
-    $detailPage = $_GET["id"];
-    $currentPage = $_GET["page"];
-    $moviesItem = getMovie($detailPage);
     $genres = getGenres();
-
+    $currentPage = $_GET["page"];
+    $detailPage = $_GET["id"];
+    $moviesItem = getMovie($detailPage);
     $page = renderTemplate("resources/pages/films.detail.php", [
         "moviesItem" => $moviesItem
     ]);
-
     renderLayout($page, ["config" => $config, "currentPage" => $currentPage, "genres" => $genres]);
 } else {
     var_dump($connect);

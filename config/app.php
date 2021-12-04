@@ -3,23 +3,14 @@
 $config = [
     "title" => "Bitflix",
     "menu" => [
-        "main" => "Главная",
-        'sci-fi' => 'Фантастика',
-        'drama' => 'Драма',
-        'adventure' => 'Приключения',
-        'animation' => 'Мультфильм',
-        'fantasy' => 'Фэнтези',
-        'family' => 'Семейный',
-        'action' => 'Боевик',
-        'thriller' => 'Триллер',
-        'comedy' => 'Комедия',
-        'music' => 'Музыка',
-        'biography' => 'Биография',
-        'western' => 'Вестерн',
-        'war' => 'Военный',
-        'sport' => 'Спорт',
-        'history' => 'История',
-        "favorite" => "Избранное",
+        "0" => [
+            "NAME" => "Главная",
+            "CODE" => "main"
+        ],
+        "1" => [
+            "NAME" => "Избранное",
+            "CODE" => "favorite"
+        ],
     ],
     "DB_NAME" => "devhomework",
     "DB_USER" => "devhomeworkuser",

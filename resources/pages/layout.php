@@ -23,16 +23,11 @@
             </div>
         </div>
         <div class="menu__list-items">
-            <pre style="display:none;">
-                <?
-                var_dump($genres);
-                ?>
-            </pre>
             <?
-            $menu = $config["menu"];
-            foreach ($menu as $key => $menuItem) {
+            $menu = array_merge($config["menu"], $genres);
+            foreach ($menu as $menuItem) {
                 ?>
-                <?= renderTemplate("resources/pages/templates/menu.list/template.php", ['menuItem' => $menuItem, "key" => $key, "currentPage" => $currentPage]); ?>
+                <?= renderTemplate("resources/pages/templates/menu.list/template.php", ['menuItem' => $menuItem, "currentPage" => $currentPage]); ?>
             <? } ?>
         </div>
     </aside>
