@@ -7,8 +7,6 @@ function getMovies($genre = ''): array
     $query = !empty($genre) ? "SELECT * FROM movie WHERE movie.ID IN (SELECT movie_genre.MOVIE_ID FROM movie_genre INNER JOIN genre on movie_genre.GENRE_ID = genre.ID WHERE genre.CODE='{$genre}')" :"SELECT * FROM movie";
 
     $result = mysqli_query($database, $query);
-
-    $result = mysqli_query($database, $query);
     if (!$result) {
         trigger_error($database->error, E_USER_ERROR);
     }
@@ -70,9 +68,6 @@ function getGenres(): array
     global $database;
 
     $query = "SELECT * FROM genre";
-
-    $result = mysqli_query($database, $query);
-
     $result = mysqli_query($database, $query);
     if (!$result) {
         trigger_error($database->error, E_USER_ERROR);

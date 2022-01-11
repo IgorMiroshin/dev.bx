@@ -1,15 +1,6 @@
 <?php
 /** @var array $moviesItem */
 ?>
-<?php
-$actors = [];
-$actorsTMP = getMovieActors($moviesItem["ID"]);
-foreach ($actorsTMP as $item) {
-    $actors[] = $item["NAME"];
-}
-$director = getMovieDirector($moviesItem["ID"]);
-
-?>
 <div class="film__page-detail_head">
     <div class="film__page-detail_title">
         <h1>
@@ -47,11 +38,11 @@ $director = getMovieDirector($moviesItem["ID"]);
                     </tr>
                     <tr>
                         <td>Режиссер:</td>
-                        <td><?= $director["NAME"] ?></td>
+                        <td><?= $moviesItem["DIRECTOR"]["NAME"] ?></td>
                     </tr>
                     <tr>
                         <td>В главных ролях:</td>
-                        <td><?= arrayToStr($actors) ?></td>
+                        <td><?= arrayToStr($moviesItem["ACTORS"]) ?></td>
                     </tr>
                 </table>
             </div>

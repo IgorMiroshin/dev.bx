@@ -2,13 +2,6 @@
 /** @var array $moviesItem */
 ?>
 <div class="film__item">
-    <?
-    $genres = [];
-    $genresTMP = getMovieGenre($moviesItem["ID"]);
-    foreach ($genresTMP as $item) {
-        $genres[] = $item["NAME"];
-    }
-    ?>
     <div class="film__item_img">
         <img src="<?= formattingLinkToImage($moviesItem["ID"], 'resources/img/content/') ?>"
              alt="<?= $moviesItem["TITLE"] ?>">
@@ -29,7 +22,7 @@
                 / <?= formattingDurationToTime($moviesItem["DURATION"]) ?>
             </div>
             <div class="film__item_genre">
-                <?= arrayToStr($genres) ?>
+                <?= arrayToStr($moviesItem["GENRES"]) ?>
             </div>
         </div>
     </div>

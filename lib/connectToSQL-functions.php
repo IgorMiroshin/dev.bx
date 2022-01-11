@@ -1,8 +1,7 @@
 <?php
-$database = mysqli_init();
-function connectSQL($host, $dbname, $dbuser, $dbpassword)
+
+function connectSQL($host, $dbname, $dbuser, $dbpassword, $database)
 {
-    global $database;
     $connectionResult = mysqli_real_connect(
         $database,
         $host,
@@ -19,9 +18,8 @@ function connectSQL($host, $dbname, $dbuser, $dbpassword)
     return $connectionResult;
 }
 
-function setEncondingConnectDB()
+function setEncondingConnectDB($database)
 {
-    global $database;
     $result = mysqli_set_charset($database, 'utf8');
     if (!$result) {
         return trigger_error(mysqli_error($database), E_USER_ERROR);

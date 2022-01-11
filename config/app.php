@@ -1,5 +1,5 @@
 <?php
-
+$database = mysqli_init();
 $config = [
     "title" => "Bitflix",
     "menu" => [
