@@ -12,7 +12,7 @@ require_once "lib/moviesSQL-functions.php";
 $connect = connectSQL($config["HOST"], $config["DB_NAME"], $config["DB_USER"], $config["DB_PASSWORD"], $database);
 $setEnconding = setEncondingConnectDB($database);
 if ($connect && $setEnconding) {
-    $genres = getGenres();
+    $genres = getGenres($database);
     $currentPage = 'addMovie';
     $page = '';
     renderLayout($page, ["config" => $config, "currentPage" => $currentPage, "genres" => $genres]);

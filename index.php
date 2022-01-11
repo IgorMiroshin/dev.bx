@@ -15,14 +15,14 @@ $connect = connectSQL($config["HOST"], $config["DB_NAME"], $config["DB_USER"], $
 $setEnconding = setEncondingConnectDB($database);
 
 if ($connect && $setEnconding) {
-    $genres = getGenres();
+    $genres = getGenres($database);
     $currentPage = isset($_GET["page"]) ? $_GET["page"] : "";
 
-    $movies = isset($currentPage) ? getMovies($currentPage) : getMovies();
+    $movies = isset($currentPage) ? getMovies($currentPage, $database) : "";
 
     foreach ($movies as $key => $moviesItem) {
         $id = (int)$moviesItem["ID"];
-        $genresTMP = getMovieGenre($id);
+        $genresTMP = getMovieGenre($id, $database);
         foreach ($genresTMP as $item) {
             $movies[$key]["GENRES"][] = $item["NAME"];
         }

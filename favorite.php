@@ -12,9 +12,9 @@ require_once "lib/moviesSQL-functions.php";
 $connect = connectSQL($config["HOST"], $config["DB_NAME"], $config["DB_USER"], $config["DB_PASSWORD"], $database);
 $setEnconding = setEncondingConnectDB($database);
 if ($connect && $setEnconding) {
-    $genres = getGenres();
+    $genres = getGenres($database);
     $currentPage = 'favorite';
-    $movies = getMovies();
+    $movies = getMovies("", $database);
     $page = renderTemplate("resources/pages/films.list.php", [
         "movies" => findElement($movies, "favoriteItem", true)
     ]);

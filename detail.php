@@ -15,17 +15,17 @@ $connect = connectSQL($config["HOST"], $config["DB_NAME"], $config["DB_USER"], $
 $setEnconding = setEncondingConnectDB($database);
 
 if ($connect && $setEnconding) {
-    $genres = getGenres();
+    $genres = getGenres($database);
     $currentPage = isset($_GET["page"]) ? $_GET["page"] : "";
     $detailPage = (int)$_GET["id"];
-    $moviesItem = getMovie($detailPage);
+    $moviesItem = getMovie($detailPage, $database);
 
-    $actorsTMP = getMovieActors((int)$moviesItem["ID"]);
+    $actorsTMP = getMovieActors((int)$moviesItem["ID"], $database);
     foreach ($actorsTMP as $item) {
         $moviesItem["ACTORS"][] = $item["NAME"];
     }
 
-    $moviesItem["DIRECTOR"] = getMovieDirector((int)$moviesItem["ID"]);
+    $moviesItem["DIRECTOR"] = getMovieDirector((int)$moviesItem["ID"], $database);
 
     $page = renderTemplate("resources/pages/films.detail.php", [
         "moviesItem" => $moviesItem
