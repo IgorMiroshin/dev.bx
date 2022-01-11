@@ -18,7 +18,7 @@ if ($connect && $setEnconding) {
     $genres = getGenres($database);
     $currentPage = isset($_GET["page"]) ? $_GET["page"] : "";
 
-    $movies = isset($currentPage) ? getMovies($currentPage, $database) : "";
+    $movies = isset($currentPage) ? getMovies($currentPage, $database) : getMovies("", $database);
 
     foreach ($movies as $key => $moviesItem) {
         $id = (int)$moviesItem["ID"];
